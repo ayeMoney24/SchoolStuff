@@ -1,6 +1,6 @@
 function TaskAtHandApp(){
 	var version = "1.3";
-	appStorage = new AppStorage("taskAtHand");
+	appStorage = new appStorage("taskAtHand");
 	
 	function setStatus(message){
 		$("#app>footer").text(message);
@@ -16,6 +16,7 @@ function TaskAtHandApp(){
 	.focus();
 	
 	$("app header").append(version);
+	loadTaskList();
 	setStatus("ready");
 };
 }
@@ -47,23 +48,38 @@ function addTaskElement(taskName){
 	$("#list").append($task);
 	
 	$("button.delete", $task).click(function(){
-		$task.remove();
+		removeTask($task);
 	});
 	$("button.move-up", $task).click(function(){
-		$task.insertBefore($task.prev());
+		moveTask($task, true);
 	});
 	$("button.move-down", $task).click(function(){
-		$task.insertAfter($task.next());
+		moveTask($task, false);
 	});
 	$("span.task-name", $task).click(function(){
 		onEditTaskName($(this));
 	});
+	
 	$("input.task-name", $task).change(function(){
 		onChangeTaskName($(this));
 	});
 	blur(function(){
 		$(this).hide().siblings("span.task-name").show();
 	});
+	function removeTask($task){
+		$task.remove();
+		saveTaskList();
+	}
+	function moveTask($task, moveUp){
+		if (moveUp){
+			$task.insertBefore($task.prev());
+		}
+		else{
+			$task.insertAfter($task.next());
+		}
+		saveTaskList();
+	}
+	saveTaskList();
 	
 }
 function onEditTaskName($span){
@@ -81,60 +97,12 @@ function onChangeTaskName($input){
 	}
 	$span.show();
 }
-
-function AppStorage(appName){
-	var prefix = (appName ? appName + "." : "");
-	this.localStorageSupported = (('localStorage' in window) && window ['localStorage']);
-	
-	this.setValue = function(key, val){
-		if (this.localStorageSupported)
-			localStorage.setItem(prefix + key, JSON.stringify(val));
-		return this;
-	};
-	
-	this.getValue = function(key){
-		if (this.localStorageSupported)
-			return JSON.parse(localStorage.getItem(prefix + key));
-		else return null;
-	};
-	
-	this.removeValue = function(key){
-		if (this.localStorageSupported)
-			localStorage.removeItem(prefix + key);
-		return this;
-	};
-	
-	this.removeAll = function(){
-		var keys = this.getKeys();
-		for(var i in keys){
-			this.remove(keys[i]);
+function loadTaskList(){
+	var tasks = appStorage.getValue("taskList");
+	if(tasks){
+		for (var i in tasks){
+			addTaskElement(tasks[i]);
 		}
-		return this;
-	};
-	
-	this.getKeys = function(filter){
-		var keys = [];
-		if (this.localStorageSupported){
-			for (var key in localStorage){
-				if (isAppKey(key)){
-					if (prefix) key = key.slice(prefix.length);
-					if (!filter || filter(key)){
-						keys.push(key);
-					}
-				}
-			}
-		}
-		return keys;
-	};
-	
-	function isAppKey(key){
-		if (prefix){
-			return key.indexOf(prefix) === 0;
-		}
-		return true;
-	};
-	
-	this.contains = function(key){
-		return this.get(key) !==null;
-	};
+	}
 }
+
