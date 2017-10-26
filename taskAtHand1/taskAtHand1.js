@@ -1,5 +1,5 @@
 function TaskAtHandApp(){
-	var version = "1.3";
+	var version = "1.0";
 	//appStorage = new appStorage("taskAtHand");
 	
 	function setStatus(message){
