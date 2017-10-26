@@ -1,6 +1,6 @@
 function TaskAtHandApp(){
 	var version = "1.3";
-	appStorage = new appStorage("taskAtHand");
+	//appStorage = new appStorage("taskAtHand");
 	
 	function setStatus(message){
 		$("#app>footer").text(message);
@@ -16,17 +16,17 @@ function TaskAtHandApp(){
 	.focus();
 	
 	$("app header").append(version);
-	loadTaskList();
+	//loadTaskList();
 	setStatus("ready");
 };
 }
-function saveTaskList(){
+/*function saveTaskList(){
 	var tasks = [];
 	$("#list .task span.task-name").each(function(){
 		tasks.push($(this).text())
 	});
 	appStorage.setValue("taskList", tasks);
-}
+}*/
 $(function(){
 	window.app = new TaskAtHandApp();
 	window.app.start();
@@ -77,9 +77,9 @@ function addTaskElement(taskName){
 		else{
 			$task.insertAfter($task.next());
 		}
-		saveTaskList();
+		//saveTaskList();
 	}
-	saveTaskList();
+	//saveTaskList();
 	
 }
 /*function onEditTaskName($span){
