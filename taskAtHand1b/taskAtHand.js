@@ -82,7 +82,7 @@ function addTaskElement(taskName){
 	saveTaskList();
 	
 }
-/*function onEditTaskName($span){
+function onEditTaskName($span){
 	$span.hide()
 		.siblings("input.task-name")
 		.val($span.text())
@@ -104,5 +104,5 @@ function loadTaskList(){
 			addTaskElement(tasks[i]);
 		}
 	}
-}*/
+}
 
