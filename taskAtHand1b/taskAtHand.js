@@ -106,3 +106,8 @@ function loadTaskList(){
 	}
 }
 
+function Undo(){
+	$("#list").empty();
+	loadTaskList();
+}
+
