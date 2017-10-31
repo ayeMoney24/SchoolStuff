@@ -79,9 +79,9 @@ function addTaskElement(taskName){
 		}
 		saveTaskList();
 	}
-	saveTaskList();
-	
+	saveTaskList();	
 }
+
 function onEditTaskName($span){
 	$span.hide()
 		.siblings("input.task-name")
@@ -89,6 +89,7 @@ function onEditTaskName($span){
 		.show()
 		.focus();
 }
+
 function onChangeTaskName($input){
 	$input.hide();
 	var $span = $input.siblings("span.task-name");
@@ -97,12 +98,20 @@ function onChangeTaskName($input){
 	}
 	$span.show();
 }
+
 function loadTaskList(){
 	var tasks = appStorage.getValue("taskList");
 	if(tasks){
 		for (var i in tasks){
 			addTaskElement(tasks[i]);
 		}
-	}
+	}	
 }
 
+function Undo(){
+	$("#list").empty();
+	loadTaskList();
+	document.location.reload()
+
+	//addTaskElement($tasks);
+}	
