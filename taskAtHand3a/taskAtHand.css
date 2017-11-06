@@ -81,7 +81,8 @@ button{
 	-o-transition: all 0.25s ease;
 	transition: all 0.25s ease;
 }
-#list .task .tools button{
+#list .task .tools button,
+#list .task button.toggle-details{
 	margin: 0;
 	padding: 0;
 	width: 16px;
@@ -89,6 +90,12 @@ button{
 	border: none;
 	color: transparent;
 	background: url(images/icons.png);
+}
+#list .task button.toggle-details{
+	background-position: 0 -16px;
+}
+#list .task button.toggle-details.expanded{
+	background-position: -16px -16px;
 }
 
 #list .task.selected{
@@ -111,3 +118,23 @@ button{
 #list .task.selected .tools{
 	opacity: 1;
 }
+
+#list .task .details{
+	display: none;
+	background-color: gray;
+	color: white;
+	border-radius: 4px;
+	margin-top: 0.5em;
+	padding: 0.25em;
+	overflow: auto;
+}
+#list .task .details label{
+	width: 8em;
+	text-align: right;
+	display: inline-block;
+	vertical-align: top;
+	font-size: 0.8em;
+}
+#list .task .details select{
+	width: 8em;
+	

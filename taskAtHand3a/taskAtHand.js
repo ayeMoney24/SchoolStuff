@@ -1,5 +1,5 @@
 function TaskAtHandApp(){
-	var version = "2.2";
+	var version = "3.1";
 	appStorage = new appStorage("taskAtHand");
 	
 	function setStatus(message){
@@ -34,6 +34,8 @@ function addTask(){
 
 function addTaskElement(taskName){
 	var $task = $("#task-template .task").clone();
+	
+	$("button.toggle-details" ,$task).click(function(){toggleDetails($task);});
 
 	$("span.task-name", $task).text(taskName);
 	
@@ -58,6 +60,10 @@ function addTaskElement(taskName){
 	blur(function(){
 		$(this).hide().siblings("span.task-name").show();
 	});
+	function toggleDetails($task){
+		$(".details", $task).slideToggle();
+		$("button.toggle-details", $task).toggleClass("expanded");
+	}
 	function removeTask($task){
 		$task.remove();
 		saveTaskList();
