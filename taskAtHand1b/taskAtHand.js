@@ -108,10 +108,3 @@ function loadTaskList(){
 	}	
 }
 
-function Undo(){
-	$("#list").empty();
-	loadTaskList();
-	document.location.reload()
-
-	//addTaskElement($tasks);
-}	
