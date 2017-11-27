@@ -1,6 +1,8 @@
 #container{
 	height:100%;
-	width:100%
+	width:100%;
+	border-style: solid;
+	border-color: black;
 }
 #top{
 	Background-color: gray;
@@ -12,15 +14,17 @@
 #content{
 	background-color: #00ffff;
 	height: 80%;
-	width:75%;
+	width:90%;
 	float: left;
+	background-color: #bbc;
+	background: -webkit-linear-gradient(top,#bbc,#558);
 
 }
 
 #sidebar{
 	float: left;
 	background-color:#33cccc;
-	width:25%;
+	width:10%;
 	height: 80%;
 	
 
