@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>WeatherApp8c</title>
+		<link href="app.css" rel="StyleSheet" />
+		<script src="lib/jquery-3.2.1.min.js"></script>
+		<script src="weatherWidget.js"></script>
+		<script src="app.js"></script>
+	</head>
+	<body>
+	<h1>Weather application ver: </h1>
+		<div id="controls">
+			<div>
+				Latitude: <input id="latitude" type="text"/><br/>
+				Longitude: <input id="longitude" type="text"/>
+			</div>
+			<button id="getWeather">Check Weather</button>
+			<div class="error">
+				Error: <span></span>
+			</div>
+		</div>
+		<div id="weather-widget">
+			<div class="loading">
+				<p>Checking the weather...</p>
+				<img src="images/loading.gif" alt="Loading..."/>
+			</div>
+			<div class="results">
+				<header>
+					<img src="" alt="Condition"/>Current weather for
+					<div class="location"><span></span></div>
+				</header>
+				<section class="conditions">
+					Conditions: <span id="cond" data-field="weather"></span><br>
+					Temperature: <span id="temp" data-field="temperature_string"></span><br>
+					Report: <span id="info" data-field="feelslike_string"></span><br>
+					Wind: <span id="wind" data-field="wind_string"></span><br>
+				</section>
+			</div>
+			<div class="error">
+				Error: <span></span>
+			</div>
+		</div>
+	</body>
+</html>
