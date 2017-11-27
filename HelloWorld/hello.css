@@ -1,0 +1,37 @@
+#h1{
+	color: blue;
+	font-family: verdana;
+}
+
+#h2{
+	color: yellow;
+	font-family: courier;
+	border:solid;
+}
+
+#h3{
+	color: green;
+}
+
+#Olist{
+	border-style:dashed;
+	float:left;
+	width:49%;
+}
+
+#Ulist{
+	border-style:dashed;
+	float:right;
+	width:49%;
+	color: white;
+	background-color: black;
+}
+
+.inline{
+	display: inline;
+}
+
+.block{
+	display: block;
+}
+	
