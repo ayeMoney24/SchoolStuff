@@ -18,7 +18,7 @@ function guess(){
 		output.innerHTML = "Guess was too low";
 	}
 	if(num2 == num1){
-		output.innerHTML = "You one in only tries! Player 1 can select a new number";
+		output.innerHTML = "You guessed the number! Player 1 can select a new number";
 		document.getElementById("input").value = ' ';
 		document.getElementById("input2").value = null;
 	}
