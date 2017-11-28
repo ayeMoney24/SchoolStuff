@@ -31,6 +31,7 @@ function guess(){
 	}
 	if(num2 < num1){
 		output.innerHTML = "Guess was too low";
+		document.getElementById("input2").value = ' ';
 	}
 	if(num2 == num1){
 		output.innerHTML = "You guessed the number! Player 1 can select a new number";
