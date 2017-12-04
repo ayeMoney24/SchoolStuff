@@ -9,16 +9,14 @@
 		<header id = "header"><h1>Game of War </h1></header>
 		<div id = "container">
 			<div id = "main">
-				<div id = "id"> Deck ID: fzg03owwpsth</div>
-				<div id = "playerCards">Player points: </div>
+				<div id = "playerCards">  Player points: </div><br>
 				<div id = "drawSpot"> </div>
-				<img id="PCard" src=""  height="168" width="84">
-				<div id = "opp">
-					<span id = "Oppid"> Deck ID: xsinll2o341z</span><br>
-					<span id = "OppCards">CPU points: </span><br> <br>
-					<div id = "OppdrawSpot"> </div>
-					<img id="oppcard"src="" height="168" width="84">
-				</div>
+				<img id="PCard" class = "hidden" src=""  height="168" width="84">
+			</div>
+			<div id = "opp">
+				<div id = "OppCards">  CPU points: </div><br>
+				<div id = "OppdrawSpot"> </div>
+				<img id="oppcard" class = "hidden" src="" height="168" width="84">
 			</div>
 			
 			<div id = "tools">
@@ -26,6 +24,7 @@
 				<button id = "draw">Draw a card</button>
 				<button id = "win"> Won Hand </button>
 				<button id = "lose"> Lost Hand </button>
+				<button id = "restart" class = "hidden"> Restart </button>
 			</div>
 		
 		</div>
