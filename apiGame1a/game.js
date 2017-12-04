@@ -75,7 +75,6 @@ function MyApp(){
 	}
 	
 	function WinHand(){
-		var OldVal = $("#playerCards").val();
 		console.log(OldVal);
 		//switch(
 		

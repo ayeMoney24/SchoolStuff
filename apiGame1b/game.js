@@ -1,0 +1,186 @@
+function MyApp(){
+	var version = " ver 2.0";
+	
+	this.start = function(){
+		var PPoints = 0;
+		var OppPoints = 0;
+		$("h1").append(version);
+		
+		
+		$("#start").on("click" , function(){
+			init();			
+		});
+		
+		$("#win").on("click" , function(){
+			WinHand(PPoints);
+			PPoints = increment(PPoints);			
+		});
+		
+		$("#lose").on("click" , function(){
+			LoseHand(OppPoints);
+			OppPoints = increment(OppPoints);
+		});
+		
+
+	};
+	
+	function init(){
+		$.ajax({
+			url: "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1",
+			dataType: "json"
+		})
+			.done(function(data) {processData(data)})
+			.fail(function() {
+				$("#tools").text("ERROR")
+			});
+			
+		$.ajax({
+			url: "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1",
+			dataType: "json"
+		})
+			.done(function(data) {	$("#OppCards").append(0); })
+			.fail(function() {
+				$("#tools").text("ERROR")
+			});
+	}
+	
+	function processData(data){
+		$("#playerCards").append(0); 
+		var DeckId = data.deck_id;
+		$("#draw").on("click" , function(){
+			draw(DeckId);			
+		});
+		
+	}
+	
+	function draw(DeckId){
+		console.log(DeckId);
+		$.ajax({
+			url: "https://deckofcardsapi.com/api/deck/fzg03owwpsth/draw/?count=1",
+			dataType: "json"
+		})
+			.done(function(data1) {cardsFunction(data1)})
+			.fail(function() {
+				$("#tools").text("ERROR")
+			});
+		$.ajax({
+			url: "https://deckofcardsapi.com/api/deck/xsinll2o341z/draw/?count=1",
+			dataType: "json"
+		})
+			.done(function(data2) {cardsFunction2(data2) })
+			.fail(function() {
+				$("#tools").text("ERROR")
+			});
+	}
+	
+	function cardsFunction(data1){
+		$("#drawSpot").text("You drew a " + data1.cards[0].value + " of " + data1.cards[0].suit);
+		$("#PCard").attr("src",data1.cards[0].image);
+		
+	}
+	
+	function cardsFunction2(data2){
+		$("#OppdrawSpot").text("CPU drew a " + data2.cards[0].value + " of " + data2.cards[0].suit);
+		$("#oppcard").attr("src",data2.cards[0].image);
+	}
+	
+	function WinHand(PPoints){
+
+		switch(PPoints){
+			case 0:
+				$("#playerCards").text("Player Points: 1");
+				PPoints = PPoints + 1;
+				break;
+			case 1:
+				$("#playerCards").text("Player Points: 2");
+				PPoints = 2;
+				break;
+			case 2:
+				$("#playerCards").text("Player Points: 3");
+				PPoints = 3;
+				break;
+			case 3:
+				$("#playerCards").text("Player Points: 4");
+				PPoints = 4;
+				break;
+			case 4:
+				$("#playerCards").text("Player Points: 5");
+				PPoints = 5;
+				break;
+			case 5:
+				$("#playerCards").text("Player Points: 6");
+				PPoints = 6;
+				break;
+			case 6:
+				$("#playerCards").text("Player Points: 7");
+				PPoints = 7;
+				break;
+			case 7:
+				$("#playerCards").text("Player Points: 8");
+				PPoints = 8;
+				break;
+			case 8:
+				$("#playerCards").text("Player Points: 9");
+				PPoints = 9;
+				break;
+			case 9:
+				$("#playerCards").text("10, you win the game!");
+				$("footer").append("Game over, refresh page to play again");
+				break;
+		}
+		
+	}
+	
+	function LoseHand(OppPoints){
+
+		switch(OppPoints){
+			case 0:
+				$("#OppCards").text("CPU Points: 1");
+				break;
+			case 1:
+				$("#OppCards").text("CPU Points: 2");
+				break;
+			case 2:
+				$("#OppCards").text("CPU Points: 3");
+				break;
+			case 3:
+				$("#OppCards").text("CPU Points: 4");
+				break;
+			case 4:
+				$("#OppCards").text("CPU Points: 5");
+				break;
+			case 5:
+				$("#OppCards").text("CPU Points: 6");
+				break;
+			case 6:
+				$("#OppCards").text("CPU Points: 7");
+				break;
+			case 7:
+				$("#OppCards").text("CPU Points: 8");
+				break;
+			case 8:
+				$("#OppCards").text("CPU Points: 9");
+				break;
+			case 9:
+				$("#OppCards").text("10, CPU wins the game!");
+				$("footer").append("Game over, refresh page to play again");
+				break;
+		}
+		
+	}
+	function increment(n){
+		n++;
+		return n;
+	}
+
+}
+	
+
+$(function() {
+	window.app = new MyApp();
+	window.app.start();
+});
+
+
+
+
