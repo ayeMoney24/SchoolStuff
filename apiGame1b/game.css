@@ -5,11 +5,12 @@ body{
 	border-color: black;
 	border-style: solid;
 	border-radius: 25px;
-	width: 35%;
-	height: 50%;
+	width: 55%;
+	height: 60%;
 	background-color: black;
 	margin: auto;
 	font-family: "Arial Black", Gadget, sans-serif;
+	font-size: 32px;
 	
 }
 
@@ -29,9 +30,10 @@ body{
 	overflow: hidden;
 	border-radius: 25px;
 	text-align: center;
+		font-size: 32px;
 }
 #draw{
-	margin-left:16%;
+	margin-left:14%;
 	margin-top: 5%;
 }
 
@@ -43,11 +45,11 @@ body{
 }
 
 #win{
-	margin-left: 16%;
+	margin-left: 14%;
 }
 
 #lose{
-	margin-left: 16%;
+	margin-left: 14%;
 	
 }
 
@@ -75,6 +77,10 @@ body{
 header{
 	text-align: center;
 	background: -webkit-linear-gradient(top,#bbc, #557daa);
+}
+
+button{
+	font-size: 20px;
 }
 
 	
