@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<title>Card Game</title>
+		<link href="game.css" rel="StyleSheet">
+		<script src="lib/jquery-3.2.1.min.js"></script>
+		<script src="game.js"></script>
+	</head>
+	<body>
+		<header id = "header"><h1>Game of War</h1></header>
+		<div id = "container">
+			<div id = "main">
+				<div id = "playerCards">  Player points: </div><br>
+				<div id = "drawSpot"> </div>
+				<img id="PCard" class = "hidden" src=""  height="168" width="84">
+			</div>
+			<div id = "opp">
+				<div id = "OppCards">  CPU points: </div><br>
+				<div id = "OppdrawSpot"> </div>
+				<img id="oppcard" class = "hidden" src="" height="168" width="84">
+			</div>
+			
+			<div id = "tools">
+				<button id = "start">Start</button>
+				<button id = "draw">Draw a card</button>
+				<button id = "win"> Won Hand </button>
+				<button id = "lose"> Lost Hand </button>
+				<button id = "restart" class = "hidden"> Restart </button>
+			</div>
+		
+		</div>
+	
+	</body>
+	<footer></footer>
+</html>
+	
