@@ -12,18 +12,28 @@ function MyApp(){
 		});
 		
 		$("#win").on("click" , function(){
-			WinHand(PPoints);
-			PPoints = increment(PPoints);			
+			PPoints = increment(PPoints);
+			$("#playerCards").text("Player Points: "+ PPoints);			
+			if(PPoints == 10){
+				$("#restart").removeClass("hidden");
+				$("#playerCards").text("Player Wins!");			
+			}	
 		});
 		
 		$("#lose").on("click" , function(){
-			LoseHand(OppPoints);
 			OppPoints = increment(OppPoints);
+			$("#OppCards").text("CPU Points: "+ OppPoints);
+			if(OppPoints == 10){
+				$("#restart").removeClass("hidden");
+				$("#OppCards").text("CPU Wins!");
+			}
+			
 		});
 		
 		$("#restart").on("click" , function(){
 			restart();			
 		});
+		
 		
 
 	};
@@ -57,9 +67,10 @@ function MyApp(){
 		
 	}
 	
-	function draw(DeckId){
+	
+	function draw(DeckId){	
 		$.ajax({
-			url: "https://deckofcardsapi.com/api/deck/7keenwohs9ia/draw/?count=1",
+			url: "https://deckofcardsapi.com/api/deck/"+ DeckId+"/draw/?count=1",
 			dataType: "json"
 		})
 			.done(function(data1) {cardsFunction(data1)})
@@ -67,7 +78,7 @@ function MyApp(){
 				$("#tools").text("ERROR")
 			});
 		$.ajax({
-			url: "https://deckofcardsapi.com/api/deck/xsinll2o341z/draw/?count=1",
+			url: "https://deckofcardsapi.com/api/deck/new/draw/?count=1",
 			dataType: "json"
 		})
 			.done(function(data2) {cardsFunction2(data2) })
@@ -88,81 +99,7 @@ function MyApp(){
 		$("#oppcard").removeClass("hidden");
 	}
 	
-	function WinHand(PPoints){
-
-		switch(PPoints){
-			case 0:
-				$("#playerCards").text("Player Points: 1");
-				break;
-			case 1:
-				$("#playerCards").text("Player Points: 2");
-				break;
-			case 2:
-				$("#playerCards").text("Player Points: 3");
-				break;
-			case 3:
-				$("#playerCards").text("Player Points: 4");
-				break;
-			case 4:
-				$("#playerCards").text("Player Points: 5");
-				break;
-			case 5:
-				$("#playerCards").text("Player Points: 6");
-				break;
-			case 6:
-				$("#playerCards").text("Player Points: 7");
-				break;
-			case 7:
-				$("#playerCards").text("Player Points: 8");
-				break;
-			case 8:
-				$("#playerCards").text("Player Points: 9");
-				break;
-			case 9:
-				$("#playerCards").text("10, you win the game!");
-				$("#restart").removeClass("hidden");
-				break;
-		}
-		
-	}
 	
-	function LoseHand(OppPoints){
-
-		switch(OppPoints){
-			case 0:
-				$("#OppCards").text("CPU Points: 1");
-				break;
-			case 1:
-				$("#OppCards").text("CPU Points: 2");
-				break;
-			case 2:
-				$("#OppCards").text("CPU Points: 3");
-				break;
-			case 3:
-				$("#OppCards").text("CPU Points: 4");
-				break;
-			case 4:
-				$("#OppCards").text("CPU Points: 5");
-				break;
-			case 5:
-				$("#OppCards").text("CPU Points: 6");
-				break;
-			case 6:
-				$("#OppCards").text("CPU Points: 7");
-				break;
-			case 7:
-				$("#OppCards").text("CPU Points: 8");
-				break;
-			case 8:
-				$("#OppCards").text("CPU Points: 9");
-				break;
-			case 9:
-				$("#OppCards").text("10, CPU wins the game!");
-				$("#restart").removeClass("hidden");
-				break;
-		}
-		
-	}
 	function increment(n){
 		n++;
 		return n;
